@@ -25,10 +25,15 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
-    - name: 'Resolve Project Dependencies Using Dotnet'
+    - name: 'Build Poll Function'
       shell: pwsh
       run: |
-        dotnet build --configuration Release --output ./output
+        dotnet build Zeptile.NotifyMarcoLmao.Poll --configuration Release --output ./output/Poll
+        
+    - name: 'Build Post Function'
+      shell: pwsh
+      run: |
+        dotnet build Zeptile.NotifyMarcoLmao.Poll --configuration Release --output ./output/Post
 
     - name: 'Run Azure Functions Action'
       uses: Azure/functions-action@v1
